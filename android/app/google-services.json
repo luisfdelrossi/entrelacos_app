@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "976090297827",
+    "project_id": "entrelacos-387103",
+    "storage_bucket": "entrelacos-387103.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976090297827:android:43fe506d06877167095cd6",
+        "android_client_info": {
+          "package_name": "com.entrelacos.entelacos_app_agenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976090297827-sqmvuuermon6g4n0bs1m379f2mh1qve4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfnN7SjHevyzuzYdeXwbySQJSkcy5wIR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976090297827-sqmvuuermon6g4n0bs1m379f2mh1qve4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976090297827:android:3e867a53df992267095cd6",
+        "android_client_info": {
+          "package_name": "com.example.entrelacos_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976090297827-sqmvuuermon6g4n0bs1m379f2mh1qve4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfnN7SjHevyzuzYdeXwbySQJSkcy5wIR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976090297827-sqmvuuermon6g4n0bs1m379f2mh1qve4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
