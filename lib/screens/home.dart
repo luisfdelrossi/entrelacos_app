@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:entrelacos_app/assets.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final String user = "NomeUser";
   final String nivelacesso = "NivelAcesso";
+  final List horarioslist = ["Nome", "09:00", "Sala Carla"];
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  datas("Hoje - 17/09", "Lista ou map de horas "),
-                  datas("Amanhã - 18/09", "Lista ou map de horas "),
-                  datas("Quarta - 19/09", "Lista ou map de horas "),
-                  datas("Quinta - 20/09", "Lista ou map de horas "),
+                  datas("Hoje - 17/09", horarioslist),
+                  datas("Amanhã - 18/09", horarioslist),
+                  datas("Quarta - 19/09", horarioslist),
+                  datas("Quinta - 20/09", horarioslist),
                 ],
               ),
             ),
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget datas(dia, horario) {
+Widget datas(dia, List horario) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -73,21 +73,21 @@ Widget datas(dia, horario) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
-                  horas("$horario"),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
+                  horas(horario),
                 ],
               ),
             ),
           ),
           decoration: BoxDecoration(
               color: Paletacores.color2,
-              borderRadius: BorderRadius.circular(8)),
+              borderRadius: BorderRadius.circular(10)),
           width: 300,
           height: 500,
         ),
@@ -96,14 +96,34 @@ Widget datas(dia, horario) {
   );
 }
 
-Widget horas(horhorario) {
+Widget horas(List horarioslist) {
   return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
     Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.00),
       child: Container(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("$horhorario"),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              Text("${horarioslist[1]}", textAlign: TextAlign.start, 
+              style: TextStyle(fontSize: 16.00)),
+              Row(
+                children: [
+                  Text("${horarioslist[0]}", style: TextStyle(fontSize: 20.00, fontWeight: FontWeight.bold)),
+                  Text(" - ${horarioslist[2]}", style: TextStyle(fontSize: 16.00)),
+                ],
+              ),
+                ]),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(child: Container(child: Text("Ver Ficha", maxLines: 2, textAlign: TextAlign.center), width: 50,), onTap: () => {},),
+            )
           ],
         ),
         decoration: BoxDecoration(
