@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
-
 /*import 'package:appwrite/appwrite.dart';
 
 Client client = Client();
@@ -16,14 +15,13 @@ client
     .setSelfSigned(status: true);
 */
 
-main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   //runApp(const MyApp());
   //runApp(MaterialApp(home: const LoginScreen()));
-  //runApp(MaterialApp(home: const HomeScreen()));
-  runApp(MaterialApp(home: const formsnewpacient()));
-  /*await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );  */
-  
+  runApp(MaterialApp(home: const HomeScreen()));
+  //runApp(MaterialApp(home: const formsnewpacient()));
 }
-

@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 class formsnewpacient extends StatefulWidget {
   const formsnewpacient({super.key});
-
+  
   @override
   State<formsnewpacient> createState() => _formsnewpacientState();
 }
 
 class _formsnewpacientState extends State<formsnewpacient> {
+  bool varRecorrente = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +80,32 @@ class _formsnewpacientState extends State<formsnewpacient> {
               
             ),
           ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text("Recorrente", style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),),
+              Switch(value: varRecorrente, onChanged: (varRecorrente) => {
+              varRecorrente = !varRecorrente, 
+              debugPrint("$varRecorrente")}
+              )
+            ],)
+          ),
+          ElevatedButton(onPressed: null, child: Text("Salvar e Agendar", style: TextStyle(color: Colors.black, fontSize: 16),), 
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Paletacores.color6),
+            minimumSize: MaterialStateProperty.all(Size(200, 40)),
+          )),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical:8.0),
+            child: ElevatedButton(onPressed: null, child: Text("Completar Cadastro", style: TextStyle(color: Colors.black, fontSize: 16),), 
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Paletacores.color6),
+              minimumSize: MaterialStateProperty.all(Size(200, 40)),
+            )),
+          ),
+          
         ],
       ),
     );
