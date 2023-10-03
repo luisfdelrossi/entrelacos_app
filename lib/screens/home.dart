@@ -1,6 +1,9 @@
 
 import 'package:entrelacos_app/assets.dart';
+import 'package:entrelacos_app/domain/models/appointment.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,10 +15,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final String user = "NomeUser";
   final String nivelacesso = "NivelAcesso";
+  late final List dates;
+  late final DateFormat weekDayFormat;
   final List horarioslist = ["Nome", "09:00", "Sala Carla"];
 
   @override
+  void initState() {
+    DateTime now = DateTime.now();
+    dates = List.generate(7, (index) => DateTime(now.year, now.month, now.day + index));
+    initializeDateFormatting("pt_BR");
+    weekDayFormat = DateFormat("EEEE - dd/MM/yyyy","pt_BR");
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    debugPrint(dates.toString());
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -26,12 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  datas("Hoje - 17/09", horarioslist),
-                  datas("Amanhã - 18/09", horarioslist),
-                  datas("Quarta - 19/09", horarioslist),
-                  datas("Quinta - 20/09", horarioslist),
-                ],
+                children: dates.map((e) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DataList(date: weekDayFormat.format(e), horario: horarioslist,),
+                )).toList(),
               ),
             ),
             TextButton(
@@ -48,52 +61,65 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget datas(dia, List horario) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: Text(
-            "$dia",
-            maxLines: 1,
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                  horas(horario),
-                ],
-              ),
+class DataList extends StatelessWidget {
+  const DataList({
+    super.key, 
+    required this.date,
+    required this.horario,
+  });
+  final String date;
+  final List<Appointment> horario;
+ 
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Text(
+              "$date",
+              maxLines: 1,
+              style: TextStyle(fontSize: 16.0),
             ),
           ),
-          decoration: BoxDecoration(
-              color: Paletacores.color2,
-              borderRadius: BorderRadius.circular(10)),
-          width: 300,
-          height: 500,
         ),
-      )
-    ],
-  );
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                    horas(horario),
+                  ],
+                ),
+              ),
+            ),
+            decoration: BoxDecoration(
+                color: Paletacores.color2,
+                borderRadius: BorderRadius.circular(10)),
+            width: 300,
+            height: 500,
+          ),
+        )
+      ],
+    );
+  }
 }
 
 Widget horas(List horarioslist) {
