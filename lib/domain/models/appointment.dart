@@ -8,6 +8,4 @@ class Appointment {
   Appointment({required this.hour, required this.pacient, required this.psicologist, required this.room});
 
   
-
-
 }

@@ -1,6 +1,5 @@
 
 import 'package:entrelacos_app/assets.dart';
-import 'package:entrelacos_app/domain/models/appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
@@ -52,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 backgroundColor: MaterialStateColor.resolveWith((states) => Paletacores.color2),
               ),
-                onPressed: null, child: Text("Agendar Novo Paciente", style: TextStyle(
+                onPressed: null, child: const Text("Agendar Novo Paciente", style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),))
@@ -68,7 +67,8 @@ class DataList extends StatelessWidget {
     required this.horario,
   });
   final String date;
-  final List<Appointment> horario;
+  //final List<Appointment> horario;
+  final List horario;
  
 
 
@@ -82,15 +82,20 @@ class DataList extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Text(
-              "$date",
+              date,
               maxLines: 1,
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
+            decoration: BoxDecoration(
+                color: Paletacores.color2,
+                borderRadius: BorderRadius.circular(10)),
+            width: 300,
+            height: 500,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Padding(
@@ -110,11 +115,6 @@ class DataList extends StatelessWidget {
                 ),
               ),
             ),
-            decoration: BoxDecoration(
-                color: Paletacores.color2,
-                borderRadius: BorderRadius.circular(10)),
-            width: 300,
-            height: 500,
           ),
         )
       ],
@@ -127,6 +127,10 @@ Widget horas(List horarioslist) {
     Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.00),
       child: Container(
+        decoration: BoxDecoration(
+            color: Paletacores.color1,
+            borderRadius: BorderRadius.circular(8.00)),
+        height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -137,25 +141,21 @@ Widget horas(List horarioslist) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
               Text("${horarioslist[1]}", textAlign: TextAlign.start, 
-              style: TextStyle(fontSize: 16.00)),
+              style: const TextStyle(fontSize: 16.00)),
               Row(
                 children: [
-                  Text("${horarioslist[0]}", style: TextStyle(fontSize: 20.00, fontWeight: FontWeight.bold)),
-                  Text(" - ${horarioslist[2]}", style: TextStyle(fontSize: 16.00)),
+                  Text("${horarioslist[0]}", style: const TextStyle(fontSize: 20.00, fontWeight: FontWeight.bold)),
+                  Text(" - ${horarioslist[2]}", style: const TextStyle(fontSize: 16.00)),
                 ],
               ),
                 ]),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(child: Container(child: Text("Ver Ficha", maxLines: 2, textAlign: TextAlign.center), width: 50,), onTap: () => {},),
+              child: InkWell(child: const SizedBox(width: 50,child: Text("Ver Ficha", maxLines: 2, textAlign: TextAlign.center),), onTap: () => {},),
             )
           ],
         ),
-        decoration: BoxDecoration(
-            color: Paletacores.color1,
-            borderRadius: BorderRadius.circular(8.00)),
-        height: 50,
       ),
     ),
   ]);
@@ -169,10 +169,10 @@ Widget topbar(user, nivelacesso) {
       children: <Widget>[
         Row(
           children: [
-            Column(
+            const Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Icon(
                     color: Paletacores.color2,
                     Icons.circle,
@@ -186,22 +186,22 @@ Widget topbar(user, nivelacesso) {
               children: [
                 Row(
                   children: [
-                    Text("Olá, ", style: TextStyle(fontSize: 24)),
+                    const Text("Olá, ", style: TextStyle(fontSize: 24)),
                     Text(user,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold)),
                   ],
                 ),
-                Text(nivelacesso, style: TextStyle(fontSize: 16)),
+                Text(nivelacesso, style: const TextStyle(fontSize: 16)),
               ],
             ),
           ],
         ),
-        Column(
+        const Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Icon(
                 color: Paletacores.color2,
                 Icons.menu,

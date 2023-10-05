@@ -1,8 +1,7 @@
-// ignore: unused_import
-import 'package:entrelacos_app/screens/formnewpacient.dart';
-import 'package:entrelacos_app/screens/home.dart';
-import 'package:entrelacos_app/screens/login.dart';
+import 'package:entrelacos_app/screens/auth_check.dart';
+import 'package:entrelacos_app/services/auth_services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +19,10 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  //runApp(const MyApp());
-  //runApp(MaterialApp(home: const LoginScreen()));
-  runApp(MaterialApp(home: const HomeScreen()));
-  //runApp(MaterialApp(home: const formsnewpacient()));
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => AuthService())],
+      child: const MaterialApp(home: AuthCheck())));
+      //child:(const MyApp());
+      //child:(MaterialApp(home: const HomeScreen()));
+      //child:(MaterialApp(home: const formsnewpacient()));
 }
