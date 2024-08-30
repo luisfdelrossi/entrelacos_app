@@ -1,14 +1,14 @@
 import 'package:entrelacos_app/assets.dart';
 import 'package:flutter/material.dart';
 
-class formsnewpacient extends StatefulWidget {
-  const formsnewpacient({super.key});
+class Formsnewpacient extends StatefulWidget {
+  const Formsnewpacient({super.key});
   
   @override
-  State<formsnewpacient> createState() => _formsnewpacientState();
+  State<Formsnewpacient> createState() => _FormsnewpacientState();
 }
 
-class _formsnewpacientState extends State<formsnewpacient> {
+class _FormsnewpacientState extends State<Formsnewpacient> {
   bool varRecorrente = true;
   @override
   Widget build(BuildContext context) {

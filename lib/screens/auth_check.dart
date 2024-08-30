@@ -1,5 +1,6 @@
 import 'package:entrelacos_app/screens/home.dart';
 import 'package:entrelacos_app/screens/login.dart';
+import 'package:entrelacos_app/screens/formnewpacient.dart';
 import 'package:entrelacos_app/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,8 @@ class _AuthCheckState extends State<AuthCheck> {
     if (auth.isLoading) {
       return loading();
     } else if (auth.user == null) {
-      return const LoginScreen();
+      //return const LoginScreen();
+      return const Formsnewpacient();
     } else {
       return const HomeScreen();
     }
