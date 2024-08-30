@@ -207,7 +207,8 @@ class _FormsnewpacientState extends State<Formsnewpacient> {
                       "Completar Cadastro",
                       style: TextStyle(color: Colors.black, fontSize: 16),
                     )),
-              ),*/
+              ),
+              */
 
               
             ],
